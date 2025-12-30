@@ -1,0 +1,199 @@
+:root {
+    --neon: #39ff14; /* Toxic Green */
+    --void: #050505; /* Deep Black */
+    --panel: rgba(20, 30, 20, 0.6); /* Glass Effect */
+    --border: rgba(57, 255, 20, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden; /* Prevents scrollbars */
+    background-color: var(--void);
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase; /* FORCES ALL CAPS */
+}
+
+/* 3D Canvas behind everything */
+#bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    color: var(--neon);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.menu button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    margin-left: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu button:hover, .menu .btn-highlight {
+    color: var(--neon);
+    text-shadow: 0 0 8px var(--neon);
+}
+
+/* PAGE LAYOUT */
+.page {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none; /* Can't click when hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.95);
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* HOME CONTENT */
+.content-box {
+    text-align: center;
+}
+
+.hero-image {
+    max-width: 300px;
+    filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.4));
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    color: var(--neon);
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* GLASS PANELS (About & Register) */
+.glass-panel {
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 40px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+.glass-panel h2 {
+    color: var(--neon);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* FORM ELEMENTS */
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: var(--neon);
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.8);
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--neon);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+/* BUTTONS */
+.neon-btn {
+    padding: 15px 30px;
+    background: var(--neon);
+    color: black;
+    border: none;
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    transition: 0.3s;
+}
+
+.neon-btn:hover {
+    background: white;
+    box-shadow: 0 0 30px white;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.text-link {
+    background: none;
+    border: none;
+    color: #666;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+.text-link:hover { color: white; }
+
+/* ABOUT PAGE GRID */
+.grid-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+.stat-box h3 { margin: 5px 0 0 0; color: white; }
+.stat-box span { font-size: 10px; color: #888; }
